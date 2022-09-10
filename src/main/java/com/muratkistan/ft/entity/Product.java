@@ -31,7 +31,7 @@ public class Product {
 
     private LocalDate expirationDate;
 
-    @JsonIgnore
+
     @OneToMany(mappedBy ="product",fetch = FetchType.LAZY)
     private List<ProductComment> productComments;
 }

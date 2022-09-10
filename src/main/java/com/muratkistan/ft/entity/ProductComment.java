@@ -33,7 +33,7 @@ public class ProductComment {
     @CreationTimestamp
     private LocalDate commentDate;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
