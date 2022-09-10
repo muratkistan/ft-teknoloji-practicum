@@ -21,6 +21,12 @@ public class ProductController {
         return ResponseEntity.ok(productService.addProduct(productDto));
     }
 
+    @GetMapping("/getAllProducts")
+    public ResponseEntity<List<ProductDto>> getAllProducts(){
+        return ResponseEntity.ok(productService.getAllProducts());
+
+    }
+
     @GetMapping("/getAllExpiredProducts")
     public ResponseEntity<List<ProductDto>> getAllExpiredProducts(){
         return ResponseEntity.ok(productService.getAllExpiredProducts());
