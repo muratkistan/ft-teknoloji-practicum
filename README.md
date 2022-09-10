@@ -21,21 +21,23 @@
 | Http Method | Erişim Noktası     | Açıklama                       |
 | :-------- | :------- | :-------------------------------- |
 | GET      | `/products/getAll` | Veritabanındaki bütün ürünleri getirir. |
-| GET      | `/products/getAllExpiredProducts` | Son kullanma tarihi geçmemiş ürünleri getirir. |
+| GET      | `/products/getAllExpiredProducts` | Son kullanma tarihi geçmiş ürünleri getirir. |
+| GET      | `/products/getAllNotExpiredProducts` | Son kullanma tarihi geçmemiş ya da tarih girilmemiş ürünleri getirir. |
 | POST      | `/products/add` | Yeni ürün ekler | |
 
 
 
-### COMMENT-SERVICE
+### PRODUCT-COMMENT-SERVICE
 
 ```
  path : localhost:8084/api/comments/**
 ```
-getByUserIdWithDate/{userId}/{startDate}/{endDate}
+
 | Http Method | Erişim Noktası     | Açıklama                       |
 | :-------- | :------- | :-------------------------------- |
-| GET      | `/comments/getAll` | Veritabanındaki bütün ürünleri getirir. |
-| GET      | `/comments/getByProductId/{productId}` | ProductId 'ye ait yorumları getirir. |
-| GET      | `/comments/getByUserId/{userId}` | UserId' ye ait yorumları getirir. |
-| GET      | `/comments/getByUserIdWithDate/{userId}/{startDate}/{endDate}` | UserId'ye ait belirli tarih aralığındaki yorumları getirir. |
+| GET      | `/comments/getAllComments` | Veritabanındaki bütün yorumlari getirir. |
+| GET      | `/comments/getCommentByProductId/{productId}` | ProductId 'ye ait yorumları getirir. |
+| GET      | `/comments/getCommentByUserId/{userId}` | UserId' ye ait yorumları getirir. |
+| GET      | `/comments/getCommentByProductIdWithDate/{productId}` | UserId'ye ait belirli tarih aralığındaki yorumları getirir. |
+| GET      | `/comments/getCommentByProductIdWithDate/{productId}` | ProductId'ye ait belirli tarih aralığındaki yorumları getirir. |
 | POST      | `/comments/add` | Yeni yorum ekler | |
