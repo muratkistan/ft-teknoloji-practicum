@@ -57,6 +57,14 @@ public class ProductCommentController {
 
     }
 
+    @GetMapping("/getAllComments")
+    public ResponseEntity<List<ProductCommentDto>> getAllComments(){
+        return ResponseEntity.ok(productCommentService.getAllComments());
+
+    }
+
+
+
 
 
 
