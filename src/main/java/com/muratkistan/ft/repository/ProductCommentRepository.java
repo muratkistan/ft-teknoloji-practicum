@@ -16,8 +16,8 @@ public interface ProductCommentRepository  extends JpaRepository<ProductComment,
 
     List<ProductComment> findAllByProductId(Long productId);
 
-    List<ProductComment> findAllByCommentDateBetweenAndUserId(Long userId, LocalDate startDate, LocalDate endDate);
+    List<ProductComment> findAllByCommentDateBetweenAndUserId( LocalDate startDate, LocalDate endDate,Long userId);
 
 
-    List<ProductComment> findAllByProductIdAndCommentDateBetween(Long productId, LocalDate startDate, LocalDate endDate);
+    List<ProductComment> findAllByCommentDateBetweenAndProductId( LocalDate startDate, LocalDate endDate,Long productId);
 }

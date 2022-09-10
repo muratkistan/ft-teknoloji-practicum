@@ -1,9 +1,11 @@
 package com.muratkistan.ft.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -27,10 +29,9 @@ public class Product {
 
     private double price;
 
-
-
     private LocalDate expirationDate;
 
+    @JsonIgnore
     @OneToMany(mappedBy ="product",fetch = FetchType.LAZY)
     private List<ProductComment> productComments;
 }

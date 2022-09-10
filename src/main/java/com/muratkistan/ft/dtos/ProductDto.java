@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -21,7 +24,7 @@ public class ProductDto {
 
     private double price;
 
-    private Date expirationDate;
+    private LocalDate expirationDate;
 
     private List<ProductComment> productComments;
 }

@@ -17,13 +17,18 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping("/add")
-    public ResponseEntity<ProductDto> addUser(@RequestBody ProductDto productDto){
+    public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto productDto){
         return ResponseEntity.ok(productService.addProduct(productDto));
     }
 
     @GetMapping("/getAllExpiredProducts")
-    public ResponseEntity<List<ProductDto>> getAllUsers(){
-        return ResponseEntity.ok(productService.findAllWithExpirationDateBefore());
+    public ResponseEntity<List<ProductDto>> getAllExpiredProducts(){
+        return ResponseEntity.ok(productService.getAllExpiredProducts());
 
+    }
+
+    @GetMapping("/getAllNotExpiredProducts")
+    public ResponseEntity<List<ProductDto>> getAllNotExpiredProducts(){
+        return ResponseEntity.ok(productService.getAllNotExpiredProducts());
     }
 }

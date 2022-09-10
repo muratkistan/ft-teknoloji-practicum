@@ -1,5 +1,6 @@
 package com.muratkistan.ft.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,6 +35,7 @@ public class User {
     @Size(max = 15)
     private String phone;
 
+    @JsonIgnore
     @OneToMany(mappedBy ="user",fetch = FetchType.LAZY)
     private List<ProductComment> productComment;
 

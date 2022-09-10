@@ -14,9 +14,9 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product,Long> {
 
 
-    @Query("From Product p where p.expirationDate >	 :expirationDate ")
-    List<Product> findAllWithExpirationDateBefore(LocalDate expirationDate);
+    @Query("From Product p where p.expirationDate <= :expirationDate ")
+    List<Product> getAllExpiredProducts(LocalDate expirationDate);
 
-    @Query("From Product p where p.expirationDate <	 :expirationDate ")
-    List<Product> findAllWithExpirationDateAfter(LocalDate expirationDate);
+    @Query("From Product p where p.expirationDate >	 :expirationDate or p.expirationDate=null  ")
+    List<Product> getAllNotExpiredProducts(LocalDate expirationDate);
 }

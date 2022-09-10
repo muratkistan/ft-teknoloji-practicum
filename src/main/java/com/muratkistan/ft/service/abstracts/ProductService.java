@@ -12,6 +12,6 @@ public interface ProductService {
 
     ProductDto addProduct(ProductDto productDto);
     List<ProductDto> getAllProducts();
-    List<ProductDto> findAllWithExpirationDateBefore();
-    List<ProductDto> findAllWithExpirationDateAfter(LocalDate expirationDate);
+    List<ProductDto> getAllExpiredProducts();
+    List<ProductDto> getAllNotExpiredProducts();
 }

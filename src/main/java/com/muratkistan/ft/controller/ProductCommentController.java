@@ -4,18 +4,17 @@ import com.muratkistan.ft.dtos.ProductCommentDto;
 import com.muratkistan.ft.dtos.UserDto;
 import com.muratkistan.ft.service.abstracts.ProductCommentService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/comments")
 public class ProductCommentController {
-
 
     private  final ProductCommentService productCommentService;
 
@@ -25,25 +24,36 @@ public class ProductCommentController {
         return ResponseEntity.ok(productCommentService.addComments(productCommentDto));
     }
 
-    @GetMapping("/getByProductId/{productId}")
+
+    @GetMapping("/getCommentByProductId/{productId}")
     public ResponseEntity<List<ProductCommentDto>> getCommentByProductId(@PathVariable Long productId){
         return ResponseEntity.ok(productCommentService.getCommentByProductId(productId));
 
     }
 
-    @GetMapping("/getByUserId/{userId}")
+    @GetMapping("/getCommentByUserId/{userId}")
     public ResponseEntity<List<ProductCommentDto>> getCommentByUserId(@PathVariable Long userId){
         return ResponseEntity.ok(productCommentService.getCommentByUserId(userId));
 
     }
 
-    @GetMapping("/getByUserIdWithDate/{userId}/{startDate}/{endDate}")
+    @GetMapping("/getCommentByUserIdWithDate/{userId}/")
     public ResponseEntity<List<ProductCommentDto>> getCommentByUserIdWithDate(
-            @PathVariable Long userId,
-            @PathVariable LocalDate startDate,
-            @PathVariable LocalDate endDate
+            @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+            @PathVariable(name = "userId") Long userId
     ){
-        return ResponseEntity.ok(productCommentService.findAllByUserIdAndCommentDateBetween(userId,startDate,endDate));
+        return ResponseEntity.ok(productCommentService.findAllByCommentDateBetweenAndUserId(startDate,endDate,userId));
+
+    }
+
+    @GetMapping("/getCommentByProductIdWithDate/{productId}/")
+    public ResponseEntity<List<ProductCommentDto>> getCommentByProductIdWithDate(
+            @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate,
+            @PathVariable(name = "productId") Long productId
+    ){
+        return ResponseEntity.ok(productCommentService.findAllByCommentDateBetweenAndProductId(startDate,endDate,productId));
 
     }
 

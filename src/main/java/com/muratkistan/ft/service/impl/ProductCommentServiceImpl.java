@@ -9,7 +9,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,15 +48,15 @@ public class ProductCommentServiceImpl implements ProductCommentService {
     }
 
     @Override
-    public List<ProductCommentDto> findAllByUserIdAndCommentDateBetween(Long userId, LocalDate startDate, LocalDate endDate) {
-        return productCommentRepository.findAllByCommentDateBetweenAndUserId(userId, startDate, endDate).stream()
+    public List<ProductCommentDto> findAllByCommentDateBetweenAndUserId( LocalDate startDate, LocalDate endDate,Long userId) {
+        return productCommentRepository.findAllByCommentDateBetweenAndUserId( startDate, endDate,userId).stream()
                 .map(productComment -> modelMapper.map(productComment,ProductCommentDto.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ProductCommentDto> findAllByProductIdAndCommentDateBetween(Long productId, LocalDate startDate, LocalDate endDate) {
-        return productCommentRepository.findAllByProductIdAndCommentDateBetween(productId, startDate, endDate).stream()
+    public List<ProductCommentDto> findAllByCommentDateBetweenAndProductId( LocalDate startDate, LocalDate endDate,Long productId) {
+        return productCommentRepository.findAllByCommentDateBetweenAndProductId( startDate, endDate,productId).stream()
                 .map(productComment -> modelMapper.map(productComment,ProductCommentDto.class))
                 .collect(Collectors.toList());
     }

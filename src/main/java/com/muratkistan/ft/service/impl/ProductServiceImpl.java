@@ -38,16 +38,16 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     @Override
-    public List<ProductDto> findAllWithExpirationDateBefore() {
-        return productRepository.findAllWithExpirationDateBefore(LocalDate.from(LocalDateTime.now()))
+    public List<ProductDto> getAllExpiredProducts() {
+        return productRepository.getAllExpiredProducts(LocalDate.from(LocalDateTime.now()))
                 .stream()
                 .map(product -> modelMapper.map(product,ProductDto.class))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<ProductDto> findAllWithExpirationDateAfter(LocalDate expirationDate) {
-        return productRepository.findAllWithExpirationDateAfter(expirationDate)
+    public List<ProductDto> getAllNotExpiredProducts() {
+        return productRepository.getAllNotExpiredProducts(LocalDate.from(LocalDateTime.now()))
                 .stream()
                 .map(product -> modelMapper.map(product,ProductDto.class))
                 .collect(Collectors.toList());
