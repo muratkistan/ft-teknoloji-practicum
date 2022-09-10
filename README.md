@@ -41,3 +41,9 @@
 | GET      | `/comments/getCommentByProductIdWithDate/{productId}` | UserId'ye ait belirli tarih aralığındaki yorumları getirir. |
 | GET      | `/comments/getCommentByProductIdWithDate/{productId}` | ProductId'ye ait belirli tarih aralığındaki yorumları getirir. |
 | POST      | `/comments/add` | Yeni yorum ekler | |
+
+
+## Swagger Documentation
+![swaggerDoc](https://user-images.githubusercontent.com/67208557/189482680-291dda2f-3cd2-4b6c-8730-560fbcba3819.PNG)
+
+
