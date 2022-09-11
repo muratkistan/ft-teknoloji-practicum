@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class ProductCommentController {
 
 
     @PostMapping("/add")
-    public ResponseEntity<ProductCommentDto> addUser(@RequestBody ProductCommentDto productCommentDto){
+    public ResponseEntity<ProductCommentDto> addUser(@Valid @RequestBody ProductCommentDto productCommentDto){
         return ResponseEntity.ok(productCommentService.addComments(productCommentDto));
     }
 

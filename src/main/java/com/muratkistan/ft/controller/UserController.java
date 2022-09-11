@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -16,7 +17,7 @@ public class UserController {
     private  final UserServiceImpl userService;
 
     @PostMapping("/add")
-    public ResponseEntity<UserDto> addUser( @RequestBody UserDto userdto){
+    public ResponseEntity<UserDto> addUser(@Valid @RequestBody UserDto userdto){
         return ResponseEntity.ok(userService.addUser(userdto));
     }
 

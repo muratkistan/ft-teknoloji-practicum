@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -17,7 +18,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping("/add")
-    public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto productDto){
+    public ResponseEntity<ProductDto> addProduct(@Valid @RequestBody ProductDto productDto){
         return ResponseEntity.ok(productService.addProduct(productDto));
     }
 
