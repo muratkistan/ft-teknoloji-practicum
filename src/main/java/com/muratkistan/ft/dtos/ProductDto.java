@@ -6,10 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -20,9 +19,12 @@ public class ProductDto {
 
     private Long id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private double price;
+
 
     private LocalDate expirationDate;
 
